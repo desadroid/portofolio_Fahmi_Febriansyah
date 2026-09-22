@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 import { 
-  Briefcase, 
-  GraduationCap, 
-  Award, 
   Code2, 
   Mail, 
   Phone, 
   ExternalLink, 
   FileText, 
-  CheckCircle2, 
-  Sparkles, 
   Copy, 
   X, 
   Menu,
-  ChevronRight,
-  ShieldCheck,
+  Award,
   CreditCard,
-  HeartHandshake
+  UserCheck
 } from 'lucide-react';
 
 export default function App() {
@@ -31,47 +25,41 @@ export default function App() {
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('fahmijha12@gmail.com');
-    showToast('Email fahmijha12@gmail.com berhasil disalin!');
+    showToast('Email fahmijha12@gmail.com disalin ke clipboard');
   };
 
   const experiences = [
     {
-      title: 'Mitra Driver Pengantaran (Sambil Kuliah)',
-      organization: 'ShopeeFood',
-      badge: 'Perjuangan & Kemandirian',
-      badgeClass: 'badge-shopee',
-      date: '2022 - 2025',
-      desc: 'Bekerja sebagai mitra pengemudi ShopeeFood di sela-sela jadwal perkuliahan S1 Teknik Informatika. Pengalaman nyata ini bukan sekadar mencari nafkah mandiri, tetapi menjadi kawah candradimuka yang menempa kedisiplinan waktu, daya tahan mental di lapangan, dan kegigihan luar biasa untuk menuntaskan kuliah hingga resmi lulus sarjana.',
-      highlights: [
-        'Kemandirian finansial membiayai operasional dan kebutuhan akademik secara mandiri',
-        'Manajemen waktu presisi antara tugas coding, jadwal kelas, dan jam narik di jalanan',
-        'Membentuk karakter pekerja keras, tangguh, pantang menyerah, dan beretika santun kepada pelanggan'
-      ]
-    },
-    {
-      title: 'Founder & Owner',
+      title: 'Owner & Web Developer',
       organization: 'Desadroid IT Consultant',
-      badge: 'Inisiatif Bisnis & Konsultasi',
-      badgeClass: 'badge-desadroid',
       date: '2023 - Sekarang',
-      desc: 'Desadroid IT Consultant adalah inisiatif layanan konsultasi teknologi dan penyedia software kustom yang saya dirikan. Fokus utama Desadroid adalah mendampingi pelaku usaha, UMKM, dan institusi lokal dalam mengadopsi solusi digital praktis—mulai dari pembuatan website bisnis, sistem pencatatan operasional, hingga optimasi alur kerja digital.',
-      highlights: [
-        'Mendengarkan kendala bisnis klien dan merumuskan solusi web/aplikasi yang efisien dan tepat sasaran',
-        'Membangun aplikasi web kustom dari perancangan antarmuka, backend, database, hingga online',
-        'Memberikan pendampingan teknis dan konsultasi digital secara transparan dan mudah dipahami'
+      desc: 'Desadroid IT Consultant adalah layanan konsultasi IT dan penyedia solusi pembuatan software/website kustom untuk kebutuhan bisnis dan UMKM.',
+      tasks: [
+        'Menganalisis kebutuhan sistem klien dan merancang solusi aplikasi web yang sesuai.',
+        'Mengembangkan aplikasi web dari frontend, backend, integrasi database, hingga deployment.',
+        'Memberikan dukungan teknis dan pemeliharaan sistem bagi klien.'
       ]
     },
     {
-      title: 'Developer Aplikasi Manajemen Bengkel Mobil',
-      organization: 'Bengkel DPM Ciangsana Bogor',
-      badge: 'Solusi Nyata Lapangan',
-      badgeClass: 'badge-workshop',
+      title: 'Web Developer',
+      organization: 'Bengkel DPM Ciangsana Bogor (Mobil)',
       date: '2024',
-      desc: 'Merancang dan membangun aplikasi web manajemen bengkel mobil untuk Bengkel DPM di Ciangsana, Bogor. Sistem ini hadir langsung untuk mengatasi hambatan pencatatan manual buku servis, merapikan arsip pengerjaan kendaraan pelanggan, dan mengontrol ketersediaan suku cadang agar tidak terjadi selisih stok.',
-      highlights: [
-        'Digitalisasi riwayat servis mobil pelanggan untuk mempercepat pencarian data saat servis berkala',
-        'Manajemen stok sparepart terintegrasi guna memantau pengeluaran dan pemasukan barang secara rapi',
-        'Otomatisasi pembuatan dokumen servis dan estimasi biaya pengerjaan yang lebih profesional'
+      desc: 'Mengembangkan aplikasi manajemen bengkel mobil berbasis web untuk digitalisasi dan efisiensi operasional bengkel.',
+      tasks: [
+        'Membangun sistem pencatatan dokumen dan riwayat servis kendaraan pelanggan.',
+        'Membuat modul manajemen stok sparepart untuk mencatat keluar-masuk barang secara akurat.',
+        'Mengotomatisasi pembuatan nota dan invoice servis kendaraan.'
+      ]
+    },
+    {
+      title: 'Mitra Driver',
+      organization: 'ShopeeFood Indonesia',
+      date: '2022 - 2025',
+      desc: 'Menjalankan operasional pengantaran pesanan makanan untuk pelanggan ShopeeFood di area operasional.',
+      tasks: [
+        'Mengelola pengantaran pesanan secara efisien dan tepat waktu.',
+        'Berkomunikasi dengan merchant dan pelanggan terkait status pesanan.',
+        'Menjaga rating dan performa pelayanan pengantaran.'
       ]
     }
   ];
@@ -80,14 +68,14 @@ export default function App() {
     {
       degree: 'S1 Teknik Informatika',
       institution: 'Universitas Indraprasta PGRI (Unindra)',
-      year: 'Lulus Tahun Ini (2026)',
-      desc: 'Berhasil menyelesaikan studi sarjana dengan fokus pada Rekayasa Perangkat Lunak, Struktur Data, Pemrograman Berorientasi Objek (OOP), Basis Data Relasional, dan Analisis Pemecahan Masalah Komputasi.'
+      year: 'Lulus 2026',
+      desc: 'Fokus pada Rekayasa Perangkat Lunak, Struktur Data, Algoritma Pemrograman, Pemrograman Berorientasi Objek (OOP), dan Basis Data Relasional.'
     },
     {
       degree: 'SMK Rekayasa Perangkat Lunak (RPL)',
       institution: 'SMK Bina Mandiri Multimedia Cileungsi',
       year: '2020 - 2023',
-      desc: 'Membentuk fondasi logika pemrograman sejak usia muda, pemrograman web dinamis (HTML, CSS, JavaScript, PHP, MySQL), algoritma dasar, serta kerja tim kejuruan IT.'
+      desc: 'Mempelajari dasar-dasar pemrograman, algoritma, pemrograman web (HTML, CSS, JavaScript, PHP, MySQL), dan basis data.'
     }
   ];
 
@@ -97,28 +85,28 @@ export default function App() {
       issuer: 'IBM SkillsBuild',
       date: 'Juni 2026',
       image: './certificates/Introduction to Artificial Intelligence.PNG',
-      desc: 'Pemahaman konsep fundamental kecerdasan buatan, algoritma pembelajaran mesin, dan implementasi AI di dunia nyata.'
+      desc: 'Konsep dasar kecerdasan buatan, machine learning, dan implementasi teknologi AI.'
     },
     {
       title: 'AI Ethics',
       issuer: 'IBM SkillsBuild',
       date: 'Juni 2026',
       image: './certificates/AI Ethics.PNG',
-      desc: 'Sertifikasi prinsip etika dalam pengembangan AI: keadilan data, transparansi model, privasi, dan tanggung jawab sosial pengembang.'
+      desc: 'Prinsip etika pengembangan AI meliputi keadilan data, transparansi model, dan privasi.'
     },
     {
       title: 'Introduction to Generative AI',
       issuer: 'IBM SkillsBuild',
       date: 'Juni 2026',
       image: './certificates/Introduction to Generative AI.PNG',
-      desc: 'Mempelajari arsitektur Generative AI, Large Language Models (LLM), prompt engineering, dan pemanfaatannya dalam produktivitas modern.'
+      desc: 'Arsitektur Generative AI, Large Language Models (LLM), dan prompt engineering.'
     },
     {
       title: 'Juara 3 Web Developer Framework',
       issuer: 'SMK Bina Mandiri Multimedia',
       date: 'Classmeeting Kejuruan',
       image: null,
-      desc: 'Prestasi dalam kompetisi pengembangan web berbasis framework antar-siswa kejuruan Rekayasa Perangkat Lunak di sekolah.'
+      desc: 'Kompetisi pengembangan web berbasis framework antar-siswa kejuruan RPL.'
     }
   ];
 
@@ -129,13 +117,11 @@ export default function App() {
       <header className="navbar">
         <div className="container nav-container">
           <a href="#hero" className="nav-brand">
-            <span className="brand-dot"></span>
             <span>Fahmi Febriansyah</span>
           </a>
 
           <nav>
             <ul className="nav-menu">
-              <li><a href="#tentang" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Tentang</a></li>
               <li><a href="#pengalaman" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Pengalaman</a></li>
               <li><a href="#pendidikan" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Pendidikan</a></li>
               <li><a href="#keahlian" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Keahlian</a></li>
@@ -147,7 +133,7 @@ export default function App() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
             <a href="cv.html" target="_blank" rel="noreferrer" className="nav-cta">
               <FileText size={16} />
-              <span>Lihat CV</span>
+              <span>CV</span>
             </a>
             <button 
               className="mobile-menu-btn" 
@@ -166,23 +152,23 @@ export default function App() {
         <section className="hero" id="hero">
           <div className="hero-grid">
             <div>
-              <div className="hero-greeting">
-                <span>👋 Halo, Salam Kenal!</span>
-              </div>
               <h1 className="hero-title">
-                Saya <span>Fahmi Febriansyah</span>, Web Developer & Lulusan S1 Teknik Informatika.
+                Fahmi Febriansyah
               </h1>
+              <div className="hero-subtitle">
+                Web Developer & Lulusan S1 Teknik Informatika
+              </div>
               <p className="hero-bio">
-                Lulusan S1 Teknik Informatika Universitas Indraprasta PGRI (Unindra) dengan fondasi SMK Rekayasa Perangkat Lunak. Terbiasa memecahkan masalah nyata menjadi aplikasi web yang bermanfaat, beretos kerja tinggi, jujur, serta siap berkontribusi penuh dalam tim pengembangan software.
+                Lulusan S1 Teknik Informatika Universitas Indraprasta PGRI dengan latar belakang SMK Rekayasa Perangkat Lunak. Berfokus pada pengembangan aplikasi web, pengelolaan database, integrasi API, dan implementasi sistem operasional bisnis.
               </p>
               <div className="hero-actions">
                 <a href="#kontak" className="btn-primary">
                   <Mail size={18} />
-                  <span>Hubungi Saya</span>
+                  <span>Kontak</span>
                 </a>
                 <a href="https://github.com/Fahmi-febriansyah" target="_blank" rel="noreferrer" className="btn-secondary">
                   <ExternalLink size={18} />
-                  <span>GitHub Pribadi</span>
+                  <span>GitHub</span>
                 </a>
                 <a href="https://github.com/desadroid?tab=repositories" target="_blank" rel="noreferrer" className="btn-secondary">
                   <Code2 size={18} />
@@ -199,41 +185,30 @@ export default function App() {
                   className="hero-avatar-img"
                   onError={(e) => { e.target.src = 'foto_profil.jpg'; }}
                 />
-                <div className="hero-status-pill">
-                  <span className="pulse-dot"></span>
-                  <span>Siap Bekerja & Berkolaborasi</span>
-                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* PENGALAMAN & PERJALANAN NYATA */}
+        {/* PENGALAMAN KERJA */}
         <section id="pengalaman">
-          <span className="section-tag">Perjalanan Nyata</span>
-          <h2 className="section-title">Pengalaman Kerja & Inisiatif</h2>
-          <p className="section-desc">
-            Bagi saya, pengalaman bukan hanya tentang jabatan, melainkan tentang tanggung jawab, kegigihan menyelesaikan masalah di lapangan, dan etos kerja keras untuk terus maju.
-          </p>
+          <span className="section-tag">Pengalaman</span>
+          <h2 className="section-title">Pengalaman Kerja</h2>
 
           <div className="experience-list">
             {experiences.map((exp, idx) => (
               <div key={idx} className="experience-card">
                 <div className="exp-header">
                   <div>
-                    <span className={`exp-badge ${exp.badgeClass}`}>{exp.badge}</span>
-                    <h3 className="exp-title" style={{ marginTop: '0.5rem' }}>{exp.title}</h3>
+                    <h3 className="exp-title">{exp.title}</h3>
                     <div className="exp-subtitle">{exp.organization}</div>
                   </div>
                   <div className="exp-date">{exp.date}</div>
                 </div>
                 <p className="exp-desc">{exp.desc}</p>
-                <ul className="exp-highlights">
-                  {exp.highlights.map((h, i) => (
-                    <li key={i}>
-                      <CheckCircle2 size={18} className="highlight-icon" />
-                      <span>{h}</span>
-                    </li>
+                <ul className="exp-tasks">
+                  {exp.tasks.map((task, i) => (
+                    <li key={i}>{task}</li>
                   ))}
                 </ul>
               </div>
@@ -243,11 +218,8 @@ export default function App() {
 
         {/* PENDIDIKAN */}
         <section id="pendidikan">
-          <span className="section-tag">Jejak Akademik</span>
+          <span className="section-tag">Pendidikan</span>
           <h2 className="section-title">Riwayat Pendidikan</h2>
-          <p className="section-desc">
-            Pendidikan formal yang telah membentuk dasar logika algoritma dan pemahaman rekayasa perangkat lunak saya dari tingkat menengah kejuruan hingga perguruan tinggi.
-          </p>
 
           <div className="education-grid">
             {educations.map((edu, idx) => (
@@ -261,13 +233,10 @@ export default function App() {
           </div>
         </section>
 
-        {/* KEAHLIAN & TEKNOLOGI */}
+        {/* KEAHLIAN */}
         <section id="keahlian">
-          <span className="section-tag">Kompetensi</span>
-          <h2 className="section-title">Keahlian & Kemampuan Praktis</h2>
-          <p className="section-desc">
-            Teknologi dan kemampuan yang telah saya pelajari, terapkan dalam proyek nyata, serta terus saya kembangkan secara konsisten.
-          </p>
+          <span className="section-tag">Keahlian</span>
+          <h2 className="section-title">Keahlian & Teknologi</h2>
 
           <div className="skills-grid">
             <div className="skill-category">
@@ -276,56 +245,48 @@ export default function App() {
                 <span>Web Dasar & Backend</span>
               </h3>
               <div className="skill-chips">
-                <span className="skill-chip featured">HTML5</span>
-                <span className="skill-chip featured">CSS3</span>
-                <span className="skill-chip featured">JavaScript</span>
-                <span className="skill-chip featured">PHP</span>
-                <span className="skill-chip featured">MySQL</span>
+                <span className="skill-chip">HTML</span>
+                <span className="skill-chip">CSS</span>
+                <span className="skill-chip">JavaScript</span>
+                <span className="skill-chip">PHP</span>
+                <span className="skill-chip">MySQL</span>
                 <span className="skill-chip">MongoDB</span>
-                <span className="skill-chip">RESTful API</span>
-                <span className="skill-chip">Responsive Web</span>
+                <span className="skill-chip">REST API</span>
               </div>
             </div>
 
             <div className="skill-category">
               <h3 className="skill-cat-title">
                 <CreditCard size={20} color="#059669" />
-                <span>Integrasi Pembayaran & Transaksi</span>
+                <span>Payment Gateway & Sistem</span>
               </h3>
               <div className="skill-chips">
-                <span className="skill-chip featured">Xendit Payment Gateway</span>
-                <span className="skill-chip">Staging / Sandbox Testing</span>
-                <span className="skill-chip">Webhook Handling</span>
-                <span className="skill-chip">Checkout Flow</span>
+                <span className="skill-chip">Payment Gateway (Xendit Staging)</span>
+                <span className="skill-chip">Webhook</span>
                 <span className="skill-chip">Manajemen Dokumen Servis</span>
-                <span className="skill-chip">Kontrol Stok Sparepart</span>
+                <span className="skill-chip">Manajemen Stok Sparepart</span>
               </div>
             </div>
 
             <div className="skill-category">
               <h3 className="skill-cat-title">
-                <HeartHandshake size={20} color="#d97706" />
-                <span>Soft Skills & Karakter Kerja</span>
+                <UserCheck size={20} color="#d97706" />
+                <span>Karakter & Soft Skills</span>
               </h3>
               <div className="skill-chips">
-                <span className="skill-chip featured">Critical Thinking</span>
-                <span className="skill-chip featured">Komunikasi Efektif</span>
-                <span className="skill-chip featured">Public Speaking</span>
-                <span className="skill-chip featured">Kerja Keras & Pantang Menyerah</span>
-                <span className="skill-chip">Kerja Sama Tim</span>
-                <span className="skill-chip">Problem Solving Lapangan</span>
+                <span className="skill-chip">Critical Thinking</span>
+                <span className="skill-chip">Public Speaking</span>
+                <span className="skill-chip">Komunikasi yang Baik</span>
+                <span className="skill-chip">Bekerja Keras</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* PENCAPAIAN & SERTIFIKAT */}
+        {/* SERTIFIKAT & PENCAPAIAN */}
         <section id="sertifikat">
-          <span className="section-tag">Bukti Kompetensi</span>
-          <h2 className="section-title">Pencapaian & Sertifikasi</h2>
-          <p className="section-desc">
-            Sertifikasi resmi dan prestasi yang membuktikan komitmen saya untuk terus belajar dan memperluas wawasan di bidang teknologi.
-          </p>
+          <span className="section-tag">Sertifikasi</span>
+          <h2 className="section-title">Pencapaian & Sertifikat</h2>
 
           <div className="cert-grid">
             {certificates.map((cert, idx) => (
@@ -338,14 +299,13 @@ export default function App() {
                   <div className="cert-thumbnail-wrapper">
                     <img src={cert.image} alt={cert.title} className="cert-thumbnail" />
                     <div className="cert-preview-overlay">
-                      <Sparkles size={16} />
-                      <span>Klik untuk Lihat Asli</span>
+                      <span>Lihat Sertifikat</span>
                     </div>
                   </div>
                 ) : (
-                  <div className="cert-thumbnail-wrapper" style={{ padding: '2rem 1.5rem', textAlign: 'center', background: '#fef3c7' }}>
-                    <Award size={48} color="#d97706" style={{ margin: '0 auto 0.5rem' }} />
-                    <div style={{ fontWeight: 700, color: '#92400e', fontSize: '0.9rem' }}>Juara 3 SMK RPL</div>
+                  <div className="cert-thumbnail-wrapper" style={{ padding: '2rem 1.5rem', textAlign: 'center', background: '#f8fafc' }}>
+                    <Award size={44} color="#2563eb" style={{ margin: '0 auto 0.5rem' }} />
+                    <div style={{ fontWeight: 600, color: '#0f172a', fontSize: '0.88rem' }}>Juara 3 SMK RPL</div>
                   </div>
                 )}
                 
@@ -353,45 +313,45 @@ export default function App() {
                   <div>
                     <div className="cert-issuer">{cert.issuer}</div>
                     <h3 className="cert-name">{cert.title}</h3>
-                    <p style={{ fontSize: '0.88rem', color: '#64748b', marginBottom: '0.8rem', lineHeight: 1.5 }}>
+                    <p style={{ fontSize: '0.86rem', color: '#64748b', marginBottom: '0.8rem', lineHeight: 1.5 }}>
                       {cert.desc}
                     </p>
                   </div>
-                  <div className="cert-date">📅 {cert.date}</div>
+                  <div className="cert-date">{cert.date}</div>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* KONTAK & AJAKAN BEKERJA SAMA */}
+        {/* KONTAK */}
         <section id="kontak">
           <div className="contact-box">
-            <span className="section-tag">Mari Terhubung</span>
-            <h2>Tertarik untuk Bekerja Sama?</h2>
+            <span className="section-tag">Kontak</span>
+            <h2>Hubungi Saya</h2>
             <p>
-              Saya sangat terbuka untuk peluang kerja sebagai Web Developer, proyek pengembangan aplikasi, maupun diskusi teknologi. Jangan ragu untuk menghubungi saya langsung.
+              Tersedia untuk peluang kerja, freelance, dan kolaborasi proyek web development.
             </p>
 
             <div className="contact-channels">
-              <button onClick={handleCopyEmail} className="channel-btn" style={{ color: '#2563eb' }}>
+              <button onClick={handleCopyEmail} className="channel-btn">
                 <Copy size={18} />
                 <span>fahmijha12@gmail.com</span>
               </button>
 
-              <a href="https://wa.me/6289669709021" target="_blank" rel="noreferrer" className="channel-btn" style={{ color: '#059669' }}>
+              <a href="https://wa.me/6289669709021" target="_blank" rel="noreferrer" className="channel-btn">
                 <Phone size={18} />
-                <span>WhatsApp (089669709021)</span>
+                <span>089669709021 (WhatsApp)</span>
               </a>
 
               <a href="https://www.linkedin.com/in/fahmifebriansyah/" target="_blank" rel="noreferrer" className="channel-btn">
                 <ExternalLink size={18} />
-                <span>LinkedIn Profile</span>
+                <span>LinkedIn</span>
               </a>
 
               <a href="https://github.com/Fahmi-febriansyah" target="_blank" rel="noreferrer" className="channel-btn">
-                <Code2 size={18} />
-                <span>GitHub Repositories</span>
+                <ExternalLink size={18} />
+                <span>GitHub</span>
               </a>
             </div>
           </div>
@@ -402,7 +362,7 @@ export default function App() {
       {/* FOOTER */}
       <footer>
         <div className="container">
-          <p>© {new Date().getFullYear()} Fahmi Febriansyah. Dibuat dengan React.js & dedikasi tinggi.</p>
+          <p>© {new Date().getFullYear()} Fahmi Febriansyah. All rights reserved.</p>
         </div>
       </footer>
 
@@ -425,7 +385,6 @@ export default function App() {
       {/* TOAST FEEDBACK */}
       {toastMessage && (
         <div className="toast-clean">
-          <CheckCircle2 size={18} color="#10b981" />
           <span>{toastMessage}</span>
         </div>
       )}
