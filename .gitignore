@@ -9,8 +9,8 @@ api/.env
 *.csv
 
 # Local data storage
-api/storage/*.json
-!api/storage/.gitkeep
+**/storage/*.json
+!**/storage/.gitkeep
 
 # Local build logs
 npm-debug.log*

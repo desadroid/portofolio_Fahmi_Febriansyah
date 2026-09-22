@@ -111,9 +111,29 @@ export default function App() {
         options.body = JSON.stringify(epObj.sampleBody || {});
       }
 
-      const res = await fetch(url, options);
+      let res = await fetch(url, options);
+
+      // Automatic fallback if server mod_rewrite is misconfigured: /api/index.php?route=...
+      if (res.status === 404 && url.includes('/api/')) {
+        const routeParam = epObj.path.replace(/^\/api\//, '');
+        const fallbackUrl = `${getBaseApiUrl()}/api/index.php?route=${encodeURIComponent(routeParam)}`;
+        try {
+          const fallbackRes = await fetch(fallbackUrl, options);
+          if (fallbackRes.ok || fallbackRes.status < 500) {
+            res = fallbackRes;
+          }
+        } catch (_) {}
+      }
+
       const duration = Math.round(performance.now() - startTime);
-      const json = await res.json();
+      const text = await res.text();
+      let json;
+      try {
+        json = JSON.parse(text);
+      } catch (parseErr) {
+        throw new Error(`Server merespons non-JSON (HTTP ${res.status}). Pastikan folder 'api' dan '.htaccess' telah di-upload ke server.`);
+      }
+
       setApiStatus(res.status);
       setApiTime(duration);
       setApiResponse(json);
@@ -212,8 +232,9 @@ export default function App() {
     setPaymentLoading(true);
     try {
       const redirectUrl = window.location.origin + window.location.pathname;
-      const url = `${getBaseApiUrl()}/api/payment/create-invoice`;
-      const res = await fetch(url, {
+      const baseUrl = getBaseApiUrl();
+      let url = `${baseUrl}/api/payment/create-invoice`;
+      let res = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -227,7 +248,34 @@ export default function App() {
         })
       });
 
-      const data = await res.json();
+      if (res.status === 404) {
+        const fallbackUrl = `${baseUrl}/api/index.php?route=payment/create-invoice`;
+        const fbRes = await fetch(fallbackUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            amount: parseInt(paymentAmount, 10),
+            payer_email: payerEmail,
+            description: paymentDesc,
+            redirect_url: redirectUrl
+          })
+        });
+        if (fbRes.ok || fbRes.status < 500) {
+          res = fbRes;
+        }
+      }
+
+      const text = await res.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (err) {
+        throw new Error(`Server merespons non-JSON (HTTP ${res.status}). Pastikan folder 'api' telah di-upload.`);
+      }
+
       if (res.ok && data.status === 'success') {
         setCreatedInvoice(data.data);
         showToast('Tagihan Xendit berhasil dibuat!');
@@ -249,8 +297,16 @@ export default function App() {
       const query = createdInvoice.invoice_id
         ? `invoice_id=${encodeURIComponent(createdInvoice.invoice_id)}`
         : `external_id=${encodeURIComponent(createdInvoice.external_id)}`;
-      const url = `${getBaseApiUrl()}/api/payment/status?${query}`;
-      const res = await fetch(url);
+      const baseUrl = getBaseApiUrl();
+      let url = `${baseUrl}/api/payment/status?${query}`;
+      let res = await fetch(url);
+      if (res.status === 404) {
+        const fallbackUrl = `${baseUrl}/api/index.php?route=payment/status&${query}`;
+        const fbRes = await fetch(fallbackUrl);
+        if (fbRes.ok || fbRes.status < 500) {
+          res = fbRes;
+        }
+      }
       const data = await res.json();
       if (res.ok && data.data) {
         setCreatedInvoice(prev => ({
@@ -283,8 +339,9 @@ export default function App() {
     if (!window.confirm('Batalkan tagihan pembayaran ini di sistem Xendit?')) return;
     setCancelLoading(true);
     try {
-      const url = `${getBaseApiUrl()}/api/payment/cancel`;
-      const res = await fetch(url, {
+      const baseUrl = getBaseApiUrl();
+      let url = `${baseUrl}/api/payment/cancel`;
+      let res = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -292,6 +349,20 @@ export default function App() {
         },
         body: JSON.stringify({ invoice_id: invId })
       });
+      if (res.status === 404) {
+        const fallbackUrl = `${baseUrl}/api/index.php?route=payment/cancel`;
+        const fbRes = await fetch(fallbackUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ invoice_id: invId })
+        });
+        if (fbRes.ok || fbRes.status < 500) {
+          res = fbRes;
+        }
+      }
       const json = await res.json();
       if (res.ok && json.status === 'success') {
         setCreatedInvoice(prev => ({
