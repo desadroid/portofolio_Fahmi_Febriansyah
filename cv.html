@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fahmi Febriansyah - Resume / Curriculum Vitae</title>
+    <title>Curriculum Vitae - Fahmi Febriansyah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -14,7 +14,7 @@
             padding: 0;
         }
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             line-height: 1.6;
             color: #1e293b;
             background: #f8fafc;
@@ -25,95 +25,80 @@
             margin: 0 auto;
             background: #ffffff;
             border-radius: 16px;
-            padding: 50px 48px;
-            box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.08);
+            padding: 48px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             border: 1px solid #e2e8f0;
         }
         header {
             border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 25px;
-            margin-bottom: 30px;
-        }
-        .top-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 15px;
+            padding-bottom: 24px;
+            margin-bottom: 28px;
         }
         h1 {
             font-size: 2.2rem;
             font-weight: 800;
             color: #0f172a;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
+            letter-spacing: -0.02em;
         }
-        .role-badge {
-            font-size: 1.1rem;
+        .title-badge {
+            font-size: 1.05rem;
             font-weight: 600;
-            color: #7c3aed;
+            color: #2563eb;
             margin-top: 4px;
+            margin-bottom: 14px;
         }
-        .contact-links {
+        .contact-row {
             display: flex;
             flex-wrap: wrap;
             gap: 16px;
             font-size: 0.9rem;
-            color: #64748b;
+            color: #475569;
         }
-        .contact-links a {
+        .contact-row a {
             color: #475569;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
             font-weight: 500;
-            transition: color 0.2s;
         }
-        .contact-links a:hover {
-            color: #7c3aed;
+        .contact-row a:hover {
+            color: #2563eb;
             text-decoration: underline;
         }
         section {
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
         h2 {
-            font-size: 0.95rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #7c3aed;
+            letter-spacing: 0.05em;
+            color: #2563eb;
             border-bottom: 1.5px solid #f1f5f9;
             padding-bottom: 6px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
         p {
             color: #334155;
-            font-size: 0.96rem;
+            font-size: 0.95rem;
             line-height: 1.7;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .item {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         .item-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             flex-wrap: wrap;
-            gap: 8px;
             margin-bottom: 4px;
         }
         .item-title {
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             color: #0f172a;
         }
         .item-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.82rem;
+            font-size: 0.84rem;
             font-weight: 600;
             color: #64748b;
             background: #f1f5f9;
@@ -123,185 +108,182 @@
         .item-org {
             font-size: 0.92rem;
             font-weight: 600;
-            color: #64748b;
-            margin-bottom: 8px;
+            color: #475569;
+            margin-bottom: 6px;
         }
         ul {
             padding-left: 20px;
             color: #334155;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             line-height: 1.65;
         }
         li {
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
-        .skills-grid {
+        .skills-summary {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
+            gap: 12px;
         }
         .skill-box {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 14px;
+            border-radius: 8px;
+            padding: 12px;
         }
         .skill-box h3 {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 700;
             color: #0f172a;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .skill-box p {
-            font-size: 0.86rem;
+            font-size: 0.84rem;
             color: #64748b;
             margin: 0;
             line-height: 1.5;
         }
-        .print-btn {
+        .print-fab {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #7c3aed;
-            color: #fff;
+            bottom: 24px;
+            right: 24px;
+            background: #2563eb;
+            color: #ffffff;
             border: none;
-            padding: 12px 22px;
+            padding: 12px 20px;
             border-radius: 9999px;
             font-weight: 600;
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
         }
-        .print-btn:hover {
-            transform: translateY(-2px);
-            background: #6d28d9;
+        .print-fab:hover {
+            background: #1d4ed8;
         }
-
         @media print {
-            body {
-                background: #fff;
-                padding: 0;
-            }
-            .cv-container {
-                box-shadow: none;
-                border: none;
-                padding: 0;
-            }
-            .print-btn {
-                display: none;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .cv-container {
-                padding: 30px 20px;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
+            body { background: #fff; padding: 0; }
+            .cv-container { box-shadow: none; border: none; padding: 0; }
+            .print-fab { display: none; }
         }
     </style>
 </head>
 <body>
 
     <div class="cv-container">
-        <!-- Header -->
         <header>
-            <div class="top-row">
-                <div>
-                    <h1>Fahmi Febriansyah</h1>
-                    <div class="role-badge">Software Engineer & IT Consultant</div>
-                </div>
-            </div>
-
-            <div class="contact-links">
+            <h1>Fahmi Febriansyah</h1>
+            <div class="title-badge">Web Developer & IT Consultant</div>
+            <div class="contact-row">
+                <span>📍 Bogor, Jawa Barat</span>
+                <span>📞 089669709021</span>
                 <a href="mailto:fahmijha12@gmail.com">✉ fahmijha12@gmail.com</a>
-                <a href="https://www.linkedin.com/in/fahmifebriansyah/" target="_blank">🔗 linkedin.com/in/fahmifebriansyah</a>
-                <a href="https://github.com/Fahmi-febriansyah?tab=repositories" target="_blank">🐙 github.com/Fahmi-febriansyah</a>
-                <a href="https://github.com/desadroid?tab=repositories" target="_blank">🌐 github.com/desadroid</a>
+                <a href="https://www.linkedin.com/in/fahmifebriansyah/" target="_blank">🔗 LinkedIn</a>
+                <a href="https://github.com/Fahmi-febriansyah" target="_blank">🐙 GitHub</a>
             </div>
         </header>
 
-        <!-- Summary -->
         <section>
-            <h2>Executive Summary</h2>
+            <h2>Ringkasan Profil</h2>
             <p>
-                Result-oriented Software Engineer and IT Consultant with a proven track record of designing, building, and deploying scalable digital solutions. With a strong foundation in system logic, clean architectural patterns, and infrastructure scalability, specializing in transforming complex business requirements into high-performing web applications.
-            </p>
-            <p>
-                As founder and independent IT Consultant at Desadroid, successfully delivered end-to-end engineering projects, ranging from custom e-commerce platforms to integrated client management systems. Passionate about clean code structure, database performance optimization, and continuous technological advancement.
+                Lulusan S1 Teknik Informatika Universitas Indraprasta PGRI (Unindra) dengan latar belakang kejuruan SMK Rekayasa Perangkat Lunak (RPL). Memiliki keahlian dalam web development (HTML, CSS, JavaScript, PHP, MySQL, MongoDB, REST API) dan integrasi Payment Gateway (Xendit Staging). Teruji memiliki etos kerja tinggi dan kemandirian melalui pengalaman bekerja sebagai driver ShopeeFood selama masa perkuliahan, serta berjiwa inisiatif tinggi sebagai founder Desadroid IT Consultant dan pengembang aplikasi manajemen bengkel mobil.
             </p>
         </section>
 
-        <!-- Experience -->
         <section>
-            <h2>Professional Experience</h2>
+            <h2>Pengalaman Kerja & Inisiatif</h2>
+            
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title">Founder & Independent IT Consultant</span>
-                    <span class="item-date">Present</span>
+                    <span class="item-title">Founder & Owner</span>
+                    <span class="item-date">2023 – Sekarang</span>
                 </div>
-                <div class="item-org">Desadroid Studio • Bogor & Jakarta, Indonesia</div>
+                <div class="item-org">Desadroid IT Consultant</div>
                 <ul>
-                    <li>Architect and implement full-stack web applications and custom management systems for clients.</li>
-                    <li>Design robust RESTful APIs, database schema optimizations, and secure authentication flows.</li>
-                    <li>Oversee server deployment, Linux environment management, domain routing, and web hosting infrastructure.</li>
-                    <li>Collaborate closely with stakeholders to translate strategic business objectives into reliable software.</li>
+                    <li>Mendirikan dan mengelola inisiatif layanan konsultasi teknologi dan pembuatan software kustom bagi pelaku usaha/UMKM.</li>
+                    <li>Menganalisis kebutuhan operasional klien dan merancang solusi aplikasi web yang fungsional, terjangkau, dan mudah digunakan.</li>
+                    <li>Mengembangkan proyek web dari tahap perancangan frontend, arsitektur backend, database, hingga publikasi online.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Pengembang Aplikasi Manajemen Bengkel Mobil</span>
+                    <span class="item-date">2024</span>
+                </div>
+                <div class="item-org">Bengkel DPM Ciangsana Bogor (Mobil)</div>
+                <ul>
+                    <li>Membangun aplikasi web manajemen bengkel untuk mengefisiensikan pendataan riwayat servis kendaraan pelanggan.</li>
+                    <li>Mengembangkan modul inventaris suku cadang untuk mengontrol stok barang keluar-masuk secara akurat dan transparan.</li>
+                    <li>Mengotomatisasi pembuatan dokumen servis dan estimasi biaya perbaikan kendaraan.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Mitra Pengemudi & Pengantaran (Sambil Kuliah S1)</span>
+                    <span class="item-date">2022 – 2025</span>
+                </div>
+                <div class="item-org">ShopeeFood Indonesia</div>
+                <ul>
+                    <li>Bekerja secara aktif di sela-sela jadwal perkuliahan untuk membiayai kebutuhan studi secara mandiri.</li>
+                    <li>Melatih kedisiplinan manajemen waktu yang ketat, ketahanan mental di lapangan, dan komunikasi santun dengan pelanggan.</li>
+                    <li>Membuktikan daya juang dan etos kerja keras hingga berhasil menyelesaikan pendidikan sarjana tepat waktu.</li>
                 </ul>
             </div>
         </section>
 
-        <!-- Core Competencies -->
         <section>
-            <h2>Core Competencies & Stack</h2>
-            <div class="skills-grid">
-                <div class="skill-box">
-                    <h3>Web & Frontend</h3>
-                    <p>HTML5, CSS3, JavaScript (ES6+), Tailwind CSS, Responsive Web Design, Component Architecture.</p>
-                </div>
-                <div class="skill-box">
-                    <h3>Backend & Systems</h3>
-                    <p>PHP & Laravel, Node.js & Express, RESTful APIs, MySQL, Database Indexing & Optimization.</p>
-                </div>
-                <div class="skill-box">
-                    <h3>Engineering & Leadership</h3>
-                    <p>Problem Solving, Software Architecture, Project Leadership, Client Communication, Version Control (Git).</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education -->
-        <section>
-            <h2>Education</h2>
+            <h2>Pendidikan</h2>
+            
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title">Bachelor of Informatics Engineering (S1)</span>
-                    <span class="item-date">2022 – 2026 (Expected)</span>
+                    <span class="item-title">S1 Teknik Informatika</span>
+                    <span class="item-date">Lulus Tahun 2026</span>
                 </div>
                 <div class="item-org">Universitas Indraprasta PGRI (Unindra)</div>
-                <p>Focusing on software engineering methodologies, data structures, database management systems, and object-oriented architecture.</p>
+                <p>Fokus: Rekayasa Perangkat Lunak, Struktur Data, Algoritma Pemrograman, Pemrograman Berorientasi Objek (OOP), dan Basis Data.</p>
             </div>
 
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title">Vocational High School – Software Engineering (RPL)</span>
+                    <span class="item-title">SMK Rekayasa Perangkat Lunak (RPL)</span>
                     <span class="item-date">2020 – 2023</span>
                 </div>
                 <div class="item-org">SMK Bina Mandiri Multimedia Cileungsi</div>
-                <p>Formed fundamental programming logic, relational databases, dynamic web development, and team collaboration fundamentals.</p>
+                <p>Fondasi logika pemrograman, web dinamis (HTML, CSS, JS, PHP, MySQL), dan dasar-dasar pengembangan aplikasi.</p>
             </div>
+        </section>
+
+        <section>
+            <h2>Keahlian</h2>
+            <div class="skills-summary">
+                <div class="skill-box">
+                    <h3>Web & Backend</h3>
+                    <p>HTML5, CSS3, JavaScript (ES6+), PHP, MySQL, MongoDB, RESTful API, React.js.</p>
+                </div>
+                <div class="skill-box">
+                    <h3>Integrasi & Pembayaran</h3>
+                    <p>Xendit Payment Gateway (Staging), Webhooks, Alur Checkout Transaksi.</p>
+                </div>
+                <div class="skill-box">
+                    <h3>Karakter & Soft Skills</h3>
+                    <p>Critical Thinking, Komunikasi Efektif, Public Speaking, Kerja Keras & Tangguh.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Sertifikasi & Prestasi</h2>
+            <ul>
+                <li><strong>IBM SkillsBuild:</strong> Introduction to Artificial Intelligence (Juni 2026)</li>
+                <li><strong>IBM SkillsBuild:</strong> AI Ethics (Juni 2026)</li>
+                <li><strong>IBM SkillsBuild:</strong> Introduction to Generative AI (Juni 2026)</li>
+                <li><strong>Juara 3 Web Developer Framework:</strong> Classmeeting Kejuruan RPL – SMK Bina Mandiri Multimedia</li>
+            </ul>
         </section>
     </div>
 
-    <!-- Quick Print Floating Action Button -->
-    <button class="print-btn" onclick="window.print()">
-        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
-        <span>Print / Save PDF</span>
-    </button>
+    <button class="print-fab" onclick="window.print()">Cetak / Simpan PDF</button>
 
 </body>
 </html>
