@@ -14,32 +14,72 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
     exit;
 }
 
-// Load environment variables from .env if present
-function loadEnv($path = __DIR__ . '/.env'): array {
+// Load environment variables from .env across candidate locations
+function loadEnv(): array {
     $env = [];
-    if (file_exists($path)) {
-        $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        foreach ($lines as $line) {
-            $line = trim($line);
-            if (strpos($line, '#') === 0) continue;
-            if (strpos($line, '=') !== false) {
-                list($key, $val) = explode('=', $line, 2);
-                $key = trim($key);
-                $val = trim($val, " \t\n\r\0\x0B\"'");
-                $env[$key] = $val;
-                if (!isset($_SERVER[$key])) {
-                    $_SERVER[$key] = $val;
+    $docRoot = !empty($_SERVER['DOCUMENT_ROOT']) ? rtrim($_SERVER['DOCUMENT_ROOT'], '/\\') : '';
+
+    $candidates = [
+        // 1. Outside root/repository in 'apikey' or 'api key' directory (Production Hosting / cPanel)
+        dirname(__DIR__, 2) . '/apikey/.env',
+        dirname(__DIR__, 2) . '/api key/.env',
+        dirname(__DIR__, 3) . '/apikey/.env',
+        dirname(__DIR__, 3) . '/api key/.env',
+        dirname(__DIR__) . '/../apikey/.env',
+        dirname(__DIR__) . '/../api key/.env',
+        $docRoot ? $docRoot . '/../apikey/.env' : null,
+        $docRoot ? $docRoot . '/../api key/.env' : null,
+        $docRoot ? $docRoot . '/apikey/.env' : null,
+        $docRoot ? $docRoot . '/api key/.env' : null,
+
+        // 2. Alongside project root
+        dirname(__DIR__) . '/apikey/.env',
+        dirname(__DIR__) . '/api key/.env',
+        dirname(__DIR__) . '/.env',
+
+        // 3. Local fallback (api/.env)
+        __DIR__ . '/.env'
+    ];
+
+    $loadedPaths = [];
+
+    foreach ($candidates as $path) {
+        if ($path && file_exists($path) && is_readable($path)) {
+            $real = realpath($path);
+            if ($real && in_array($real, $loadedPaths, true)) continue;
+            if ($real) $loadedPaths[] = $real;
+
+            $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            if ($lines !== false) {
+                foreach ($lines as $line) {
+                    $line = trim($line);
+                    if (strpos($line, '#') === 0) continue;
+                    if (strpos($line, '=') !== false) {
+                        list($key, $val) = explode('=', $line, 2);
+                        $key = trim($key);
+                        $val = trim($val, " \t\n\r\0\x0B\"'");
+                        $env[$key] = $val;
+                        if (!isset($_SERVER[$key])) {
+                            $_SERVER[$key] = $val;
+                        }
+                        if (!isset($_ENV[$key])) {
+                            $_ENV[$key] = $val;
+                        }
+                        putenv("{$key}={$val}");
+                    }
                 }
             }
         }
     }
+
+    $GLOBALS['API_ENV_LOADED_FROM'] = $loadedPaths;
     return $env;
 }
 
 $GLOBALS['API_ENV'] = loadEnv();
 
 function getEnvVar($key, $default = '') {
-    return $GLOBALS['API_ENV'][$key] ?? $_SERVER[$key] ?? getenv($key) ?: $default;
+    return $GLOBALS['API_ENV'][$key] ?? $_SERVER[$key] ?? $_ENV[$key] ?? (getenv($key) !== false ? getenv($key) : $default);
 }
 
 function jsonResponse($data, int $statusCode = 200, array $extraMeta = []): void {

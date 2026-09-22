@@ -12,7 +12,10 @@ class XenditService {
     private string $storageFile = __DIR__ . '/storage/invoices.json';
 
     public function __construct() {
-        $this->secretKey = getEnvVar('XENDIT_SECRET_KEY', '');
+        $this->secretKey = getEnvVar('XENDIT_SECRET_KEY', '') 
+            ?: getEnvVar('XENDIT_KEY', '') 
+            ?: getEnvVar('SECRET_KEY', '') 
+            ?: getEnvVar('API_KEY', '');
     }
 
     public function isConfigured(): bool {
@@ -26,7 +29,7 @@ class XenditService {
         if (!$this->isConfigured()) {
             return [
                 'success' => false,
-                'error'   => 'Xendit Secret Key belum dikonfigurasi di api/.env'
+                'error'   => 'Xendit Secret Key belum dikonfigurasi di file .env (lokasi: folder apikey/.env atau api/.env)'
             ];
         }
 
@@ -217,7 +220,9 @@ class XenditService {
      * Handle Xendit Webhook
      */
     public function handleWebhook(array $payload, string $receivedToken): array {
-        $expectedToken = getEnvVar('XENDIT_CALLBACK_TOKEN', '');
+        $expectedToken = getEnvVar('XENDIT_CALLBACK_TOKEN', '') 
+            ?: getEnvVar('CALLBACK_TOKEN', '') 
+            ?: getEnvVar('XENDIT_VERIFICATION_TOKEN', '');
         
         // Optional verification if callback token is set
         if (!empty($expectedToken) && $receivedToken !== $expectedToken) {

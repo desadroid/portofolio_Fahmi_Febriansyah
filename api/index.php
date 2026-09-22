@@ -243,7 +243,7 @@ switch ($route) {
         }
 
         $input = json_decode(file_get_contents('php://input'), true) ?: [];
-        $invoiceId = trim($input['invoice_id'] ?? $_GET['invoice_id'] ?? '');
+        $invoiceId = trim($input['invoice_id'] ?? $_POST['invoice_id'] ?? $_GET['invoice_id'] ?? '');
 
         if (empty($invoiceId)) {
             jsonResponse(['error' => 'Parameter invoice_id diperlukan untuk pembatalan invoice'], 400);
