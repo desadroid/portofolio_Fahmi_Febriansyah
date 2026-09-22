@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /Portofolio/
+
+    # Route /api/* requests to api/index.php
+    RewriteRule ^api/(.*)$ api/index.php?route=$1 [QSA,L]
+</IfModule>
+
+# Prevent viewing sensitive files
+<FilesMatch "^\.env|\.(log|csv)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+Options -Indexes

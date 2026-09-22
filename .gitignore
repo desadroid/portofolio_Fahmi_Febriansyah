@@ -1,6 +1,17 @@
 # Dependencies
 node_modules/
 
+# Environment Variables & Secrets
+.env
+.env.*
+api/.env
+!api/.env.example
+*.csv
+
+# Local data storage
+api/storage/*.json
+!api/storage/.gitkeep
+
 # Local build logs
 npm-debug.log*
 yarn-debug.log*
@@ -10,3 +21,4 @@ yarn-error.log*
 *.zip
 .DS_Store
 Thumbs.db
+scratch/
