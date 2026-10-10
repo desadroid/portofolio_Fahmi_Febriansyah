@@ -24,7 +24,8 @@ import {
   AlertCircle,
   Globe,
   Layers,
-  ArrowUpRight
+  ArrowUpRight,
+  ChevronDown
 } from 'lucide-react';
 
 export default function App() {
@@ -524,6 +525,13 @@ export default function App() {
       date: 'Classmeeting Kejuruan',
       image: null,
       desc: 'Kompetisi pengembangan web berbasis framework antar-siswa kejuruan RPL.'
+    },
+    {
+      title: 'Intro to Software Engineering',
+      issuer: 'RevoU',
+      date: '25 September 2026',
+      image: './certificates/Coding Camp RevoU.png',
+      desc: 'Sertifikat kehadiran kursus online satu minggu Intro to Software Engineering dari RevoU.'
     }
   ];
 
@@ -535,7 +543,6 @@ export default function App() {
         <div className="container nav-container">
           <a href="#hero" className="nav-brand">
             <span className="nav-brand-title">Fahmi Febriansyah</span>
-            <span className="nav-brand-role">Web Developer</span>
           </a>
 
           <nav className={`nav-menu-wrapper ${mobileMenuOpen ? 'mobile-open' : ''}`}>
@@ -544,10 +551,20 @@ export default function App() {
               <li><a href="#proyek" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Proyek</a></li>
               <li><a href="#pendidikan" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Pendidikan</a></li>
               <li><a href="#keahlian" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Keahlian</a></li>
-              <li><a href="#api-section" className="nav-link" onClick={() => setMobileMenuOpen(false)}>REST API</a></li>
-              <li><a href="#payment-section" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Xendit Demo</a></li>
-              <li><a href="#sertifikat" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Sertifikat</a></li>
-              <li><a href="#kontak" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Kontak</a></li>
+              <li className="nav-dropdown-item">
+                <details className="nav-dropdown">
+                  <summary className="nav-link nav-dropdown-toggle">
+                    Lainnya
+                    <ChevronDown size={14} aria-hidden="true" />
+                  </summary>
+                  <ul className="nav-dropdown-menu">
+                    <li><a href="#api-section" className="nav-dropdown-link" onClick={() => setMobileMenuOpen(false)}>REST API</a></li>
+                    <li><a href="#payment-section" className="nav-dropdown-link" onClick={() => setMobileMenuOpen(false)}>Xendit Demo</a></li>
+                    <li><a href="#sertifikat" className="nav-dropdown-link" onClick={() => setMobileMenuOpen(false)}>Sertifikat</a></li>
+                    <li><a href="#kontak" className="nav-dropdown-link" onClick={() => setMobileMenuOpen(false)}>Kontak</a></li>
+                  </ul>
+                </details>
+              </li>
             </ul>
             <div className="mobile-menu-cta">
               <a href="cv.html" target="_blank" rel="noreferrer" className="btn-primary" onClick={() => setMobileMenuOpen(false)} style={{ width: '100%', justifyContent: 'center' }}>
@@ -1162,7 +1179,7 @@ export default function App() {
                 ) : (
                   <div className="cert-thumbnail-wrapper" style={{ padding: '2rem 1.5rem', textAlign: 'center', background: '#f8fafc' }}>
                     <Award size={44} color="#2563eb" style={{ margin: '0 auto 0.5rem' }} />
-                    <div style={{ fontWeight: 600, color: '#0f172a', fontSize: '0.88rem' }}>Juara 3 SMK RPL</div>
+                    <div style={{ fontWeight: 600, color: '#0f172a', fontSize: '0.88rem' }}>{cert.title}</div>
                   </div>
                 )}
                 

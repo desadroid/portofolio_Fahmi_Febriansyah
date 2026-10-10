@@ -121,6 +121,12 @@ $portfolioData = [
             'title'  => 'Juara 3 Web Developer Framework',
             'issuer' => 'SMK Bina Mandiri Multimedia',
             'date'   => 'Classmeeting Kejuruan RPL'
+        ],
+        [
+            'title'  => 'Intro to Software Engineering',
+            'issuer' => 'RevoU',
+            'date'   => '25 September 2026',
+            'code'   => 'CCSE-210926-01-1-00089'
         ]
     ]
 ];

@@ -1,4 +1,6 @@
 # Block direct access to sensitive files in api folder
+DirectoryIndex index.php
+
 <FilesMatch "^\.env|\.(log|json)$">
     <IfModule !mod_authz_core.c>
         Order deny,allow
