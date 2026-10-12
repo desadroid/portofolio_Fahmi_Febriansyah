@@ -1,32 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Code2, 
-  Mail, 
-  Phone, 
-  ExternalLink, 
-  FileText, 
-  Copy, 
-  X, 
-  Menu,
-  Award,
-  CreditCard,
-  UserCheck,
-  Send,
-  RefreshCw,
-  Check,
-  Terminal,
-  Clock,
-  CheckCircle2,
-  Sparkles,
-  ShieldCheck,
-  PartyPopper,
-  XCircle,
-  AlertCircle,
-  Globe,
-  Layers,
-  ArrowUpRight,
-  ChevronDown
-} from 'lucide-react';
+import { X, Menu, RefreshCw, ChevronDown } from 'lucide-react';
+import Lanyard from './components/Lanyard.jsx';
 
 export default function App() {
   const [activeCert, setActiveCert] = useState(null);
@@ -56,7 +30,7 @@ export default function App() {
   const [cancelLoading, setCancelLoading] = useState(false);
   const [isPolling, setIsPolling] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
-  const [confettiParticles, setConfettiParticles] = useState([]);
+  const technologies = ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL', 'MongoDB', 'REST API'];
 
   const showToast = (msg) => {
     setToastMessage(msg);
@@ -75,24 +49,6 @@ export default function App() {
       return '/Portofolio';
     }
     return '';
-  };
-
-  // Confetti Particle Generator
-  const triggerConfetti = () => {
-    const colors = ['#2563eb', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6', '#06b6d4', '#14b8a6'];
-    const particles = Array.from({ length: 65 }).map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      driftX: (Math.random() - 0.5) * 320 + 'px',
-      fallDuration: (Math.random() * 2 + 2.5).toFixed(2) + 's',
-      fallDelay: (Math.random() * 0.5).toFixed(2) + 's',
-      spinDeg: Math.floor(Math.random() * 720 - 360) + 'deg',
-      color: colors[Math.floor(Math.random() * colors.length)],
-      size: Math.floor(Math.random() * 7 + 6) + 'px',
-      shape: Math.random() > 0.4 ? 'rect' : 'circle'
-    }));
-    setConfettiParticles(particles);
-    setTimeout(() => setConfettiParticles([]), 5500);
   };
 
   // Execute API Request
@@ -173,7 +129,6 @@ export default function App() {
             setCreatedInvoice(json.data);
             if (json.data.status === 'PAID' || paymentStatus === 'PAID') {
               setShowCelebration(true);
-              triggerConfetti();
               showToast('Pembayaran berhasil diverifikasi otomatis!');
             }
           }
@@ -212,7 +167,6 @@ export default function App() {
           }));
           setIsPolling(false);
           setShowCelebration(true);
-          triggerConfetti();
           showToast('Pembayaran berhasil dikonfirmasi secara otomatis!');
           clearInterval(interval);
         }
@@ -318,7 +272,6 @@ export default function App() {
         }));
         if (data.data.status === 'PAID') {
           setShowCelebration(true);
-          triggerConfetti();
           showToast('Status invoice: LUNAS (PAID)');
         } else {
           showToast(`Status invoice: ${data.data.status}`);
@@ -568,7 +521,6 @@ export default function App() {
             </ul>
             <div className="mobile-menu-cta">
               <a href="cv.html" target="_blank" rel="noreferrer" className="btn-primary" onClick={() => setMobileMenuOpen(false)} style={{ width: '100%', justifyContent: 'center' }}>
-                <FileText size={16} />
                 <span>Lihat Curriculum Vitae (CV)</span>
               </a>
             </div>
@@ -576,7 +528,6 @@ export default function App() {
 
           <div className="nav-right-actions">
             <a href="cv.html" target="_blank" rel="noreferrer" className="nav-cta desktop-cv-btn">
-              <FileText size={15} />
               <span>CV</span>
             </a>
             <button 
@@ -608,29 +559,45 @@ export default function App() {
               </p>
               <div className="hero-actions">
                 <a href="#kontak" className="btn-primary">
-                  <Mail size={18} />
                   <span>Kontak</span>
                 </a>
                 <a href="https://github.com/Fahmi-febriansyah" target="_blank" rel="noreferrer" className="btn-secondary">
-                  <ExternalLink size={18} />
                   <span>GitHub</span>
                 </a>
                 <a href="https://github.com/desadroid?tab=repositories" target="_blank" rel="noreferrer" className="btn-secondary">
-                  <Code2 size={18} />
                   <span>Desadroid GitHub</span>
                 </a>
               </div>
             </div>
 
-            <div className="hero-avatar-wrapper">
-              <div className="hero-avatar-card">
-                <img 
-                  src="./foto_profil.jpg" 
-                  alt="Fahmi Febriansyah" 
-                  className="hero-avatar-img"
-                  onError={(e) => { e.target.src = 'foto_profil.jpg'; }}
-                />
-              </div>
+            <div className="hero-lanyard-stage" role="img" aria-label="Kartu identitas Fahmi Febriansyah yang dapat digerakkan dan dibalik">
+              <Lanyard
+                className="hero-lanyard"
+                frontImage="./fahmi-lanyard-card.svg"
+                backImage="./fahmi-lanyard-card-back.svg"
+                finish="matte"
+                strapColor="#72583f"
+                size={0.82}
+                intro={false}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="technology-marquee" aria-label="Bahasa pemrograman dan teknologi yang digunakan">
+          <div className="technology-marquee-heading">
+            <span className="section-tag">Yang saya gunakan</span>
+            <span className="technology-marquee-note">Bahasa & teknologi</span>
+          </div>
+          <div className="technology-marquee-window">
+            <div className="technology-marquee-track">
+              {[0, 1].map((copy) => (
+                <div className="technology-marquee-group" key={copy} aria-hidden={copy === 1}>
+                  {technologies.map((technology) => (
+                    <span className="technology-marquee-item" key={technology}>{technology}</span>
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -717,7 +684,6 @@ export default function App() {
                         style={{ fontSize: '0.84rem', padding: '0.5rem 0.9rem' }}
                       >
                         <span>{lnk.label}</span>
-                        {lnk.url.startsWith('http') && <ExternalLink size={14} />}
                       </a>
                     ))}
                   </div>
@@ -752,7 +718,6 @@ export default function App() {
           <div className="skills-grid">
             <div className="skill-category">
               <h3 className="skill-cat-title">
-                <Code2 size={20} color="#2563eb" />
                 <span>Web Dasar & Backend</span>
               </h3>
               <div className="skill-chips">
@@ -768,7 +733,6 @@ export default function App() {
 
             <div className="skill-category">
               <h3 className="skill-cat-title">
-                <CreditCard size={20} color="#059669" />
                 <span>Payment Gateway & Sistem</span>
               </h3>
               <div className="skill-chips">
@@ -781,7 +745,6 @@ export default function App() {
 
             <div className="skill-category">
               <h3 className="skill-cat-title">
-                <UserCheck size={20} color="#d97706" />
                 <span>Karakter & Soft Skills</span>
               </h3>
               <div className="skill-chips">
@@ -835,7 +798,7 @@ export default function App() {
                 onClick={() => handleFetchApi(selectedEndpoint)}
                 disabled={apiLoading}
               >
-                {apiLoading ? <RefreshCw size={14} className="spin-icon" /> : <Send size={14} />}
+                {apiLoading && <RefreshCw size={14} className="spin-icon" />}
                 <span>{apiLoading ? 'Memuat...' : 'Kirim Request'}</span>
               </button>
             </div>
@@ -974,7 +937,6 @@ export default function App() {
                   style={{ width: '100%', justifyContent: 'center' }}
                   disabled={paymentLoading}
                 >
-                  <CreditCard size={18} />
                   <span>{paymentLoading ? 'Memproses ke Xendit...' : 'Buat Invoice Xendit'}</span>
                 </button>
               </form>
@@ -987,11 +949,11 @@ export default function App() {
                     <span style={{ fontSize: '0.88rem', fontWeight: 700 }}>Invoice Tagihan Xendit</span>
                     {createdInvoice.status === 'PAID' ? (
                       <span className="status-pill paid">
-                        <Check size={13} /> PAID
+                        PAID
                       </span>
                     ) : createdInvoice.status === 'EXPIRED' ? (
                       <span className="status-pill expired">
-                        <XCircle size={13} /> EXPIRED
+                        EXPIRED
                       </span>
                     ) : (
                       <span className="status-pill pending">
@@ -1001,32 +963,29 @@ export default function App() {
                   </div>
 
                   {createdInvoice.status === 'PAID' ? (
-                    <div style={{ background: '#ecfdf5', border: '1px solid #a7f3d0', borderRadius: '8px', padding: '0.85rem 1rem', marginBottom: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                      <CheckCircle2 size={24} color="#059669" style={{ flexShrink: 0 }} />
+                    <div className="invoice-notice paid">
                       <div>
-                        <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#065f46' }}>
+                        <div className="invoice-notice-title">
                           Pembayaran Berhasil Dikonfirmasi!
                         </div>
-                        <div style={{ fontSize: '0.8rem', color: '#047857' }}>
+                        <div className="invoice-notice-message">
                           Status transaksi terverifikasi LUNAS via Xendit API.
                         </div>
                       </div>
                     </div>
                   ) : createdInvoice.status === 'EXPIRED' ? (
-                    <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', padding: '0.85rem 1rem', marginBottom: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                      <AlertCircle size={24} color="#dc2626" style={{ flexShrink: 0 }} />
+                    <div className="invoice-notice expired">
                       <div>
-                        <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#991b1b' }}>
+                        <div className="invoice-notice-title">
                           Tagihan Telah Dibatalkan / Kedaluwarsa
                         </div>
-                        <div style={{ fontSize: '0.8rem', color: '#b91c1c' }}>
+                        <div className="invoice-notice-message">
                           Status invoice telah diubah menjadi EXPIRED di Xendit. Tautan pembayaran ditutup.
                         </div>
                       </div>
                     </div>
                   ) : (
                     <div className="polling-badge" style={{ marginBottom: '1rem', width: '100%', justifyContent: 'center' }}>
-                      <RefreshCw size={13} className={isPolling ? 'spin-icon' : ''} />
                       <span>{isPolling ? 'Memeriksa status otomatis setiap 3 detik...' : 'Menunggu penyelesaian pembayaran...'}</span>
                     </div>
                   )}
@@ -1049,7 +1008,7 @@ export default function App() {
 
                   <div className="invoice-meta-row">
                     <span className="invoice-meta-label">Nominal:</span>
-                    <span className="invoice-meta-value" style={{ color: createdInvoice.status === 'PAID' ? '#059669' : createdInvoice.status === 'EXPIRED' ? '#dc2626' : 'inherit', fontWeight: 700 }}>
+                    <span className={`invoice-meta-value invoice-amount ${createdInvoice.status === 'PAID' ? 'paid' : createdInvoice.status === 'EXPIRED' ? 'expired' : ''}`}>
                       Rp {parseInt(createdInvoice.amount, 10).toLocaleString('id-ID')}
                     </span>
                   </div>
@@ -1074,15 +1033,11 @@ export default function App() {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginTop: '1.4rem' }}>
                       <button
                         type="button"
-                        onClick={() => {
-                          setShowCelebration(true);
-                          triggerConfetti();
-                        }}
+                        onClick={() => setShowCelebration(true)}
                         className="btn-primary"
-                        style={{ justifyContent: 'center', fontSize: '0.88rem', background: '#059669', borderColor: '#059669' }}
+                        style={{ justifyContent: 'center', fontSize: '0.88rem' }}
                       >
-                        <Sparkles size={16} />
-                        <span>Lihat Animasi Bukti Pembayaran</span>
+                        <span>Lihat Ringkasan Pembayaran</span>
                       </button>
 
                       <button
@@ -1115,7 +1070,6 @@ export default function App() {
                         style={{ justifyContent: 'center', fontSize: '0.88rem' }}
                       >
                         <span>Buka Pembayaran Xendit</span>
-                        <ExternalLink size={16} />
                       </a>
 
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem' }}>
@@ -1126,7 +1080,6 @@ export default function App() {
                           style={{ justifyContent: 'center', fontSize: '0.86rem' }}
                           disabled={statusChecking}
                         >
-                          <RefreshCw size={14} className={statusChecking ? 'spin-icon' : ''} />
                           <span>{statusChecking ? 'Cek...' : 'Cek Status'}</span>
                         </button>
 
@@ -1137,7 +1090,6 @@ export default function App() {
                           style={{ justifyContent: 'center', fontSize: '0.86rem' }}
                           disabled={cancelLoading}
                         >
-                          <XCircle size={14} />
                           <span>{cancelLoading ? 'Batal...' : 'Batalkan Tagihan'}</span>
                         </button>
                       </div>
@@ -1146,7 +1098,6 @@ export default function App() {
                 </div>
               ) : (
                 <div style={{ textAlign: 'center', color: 'var(--text-light)', padding: '2rem 1rem' }}>
-                  <CreditCard size={40} style={{ margin: '0 auto 0.8rem', opacity: 0.5 }} />
                   <div style={{ fontWeight: 600, marginBottom: '0.3rem' }}>Belum Ada Tagihan Aktif</div>
                   <div style={{ fontSize: '0.85rem' }}>
                     Isi form di sebelah kiri untuk menghasilkan URL tagihan simulasi dari API Xendit Sandbox.
@@ -1178,7 +1129,7 @@ export default function App() {
                   </div>
                 ) : (
                   <div className="cert-thumbnail-wrapper" style={{ padding: '2rem 1.5rem', textAlign: 'center', background: '#f8fafc' }}>
-                    <Award size={44} color="#2563eb" style={{ margin: '0 auto 0.5rem' }} />
+                    <div style={{ fontSize: '0.76rem', color: '#64748b', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Sertifikat Penghargaan</div>
                     <div style={{ fontWeight: 600, color: '#0f172a', fontSize: '0.88rem' }}>{cert.title}</div>
                   </div>
                 )}
@@ -1201,31 +1152,32 @@ export default function App() {
         {/* KONTAK */}
         <section id="kontak">
           <div className="contact-box">
-            <span className="section-tag">Kontak</span>
-            <h2>Hubungi Saya</h2>
-            <p>
-              Tersedia untuk peluang kerja, freelance, dan kolaborasi proyek web development.
-            </p>
+            <div className="contact-intro">
+              <span className="section-tag">Kontak</span>
+              <h2>Obrolkan ide berikutnya.</h2>
+              <p>Tersedia untuk peluang kerja, freelance, dan kolaborasi proyek web development.</p>
+              <span className="contact-location">Berbasis di Bogor, Jawa Barat</span>
+            </div>
 
             <div className="contact-channels">
-              <button onClick={handleCopyEmail} className="channel-btn">
-                <Copy size={18} />
-                <span>fahmijha12@gmail.com</span>
+              <button onClick={handleCopyEmail} className="contact-card contact-card-button" aria-label="Salin email Fahmi Febriansyah">
+                <span className="contact-card-label">Email <span>Klik untuk menyalin</span></span>
+                <span className="contact-card-value">fahmijha12@gmail.com</span>
               </button>
 
-              <a href="https://wa.me/6289669709021" target="_blank" rel="noreferrer" className="channel-btn">
-                <Phone size={18} />
-                <span>089669709021 (WhatsApp)</span>
+              <a href="https://wa.me/6289669709021" target="_blank" rel="noreferrer" className="contact-card">
+                <span className="contact-card-label">WhatsApp <span>Pesan langsung</span></span>
+                <span className="contact-card-value">089669709021</span>
               </a>
 
-              <a href="https://www.linkedin.com/in/fahmifebriansyah/" target="_blank" rel="noreferrer" className="channel-btn">
-                <ExternalLink size={18} />
-                <span>LinkedIn</span>
+              <a href="https://www.linkedin.com/in/fahmifebriansyah/" target="_blank" rel="noreferrer" className="contact-card">
+                <span className="contact-card-label">LinkedIn <span>Profil profesional</span></span>
+                <span className="contact-card-value">Fahmi Febriansyah</span>
               </a>
 
-              <a href="https://github.com/Fahmi-febriansyah" target="_blank" rel="noreferrer" className="channel-btn">
-                <ExternalLink size={18} />
-                <span>GitHub</span>
+              <a href="https://github.com/Fahmi-febriansyah" target="_blank" rel="noreferrer" className="contact-card">
+                <span className="contact-card-label">GitHub <span>Karya dan kode</span></span>
+                <span className="contact-card-value">Fahmi-febriansyah</span>
               </a>
             </div>
           </div>
@@ -1256,29 +1208,6 @@ export default function App() {
         </div>
       )}
 
-      {/* CONFETTI ANIMATION */}
-      {confettiParticles.length > 0 && (
-        <div className="confetti-container" aria-hidden="true">
-          {confettiParticles.map((p) => (
-            <span
-              key={p.id}
-              className="confetti-particle"
-              style={{
-                left: `${p.left}%`,
-                backgroundColor: p.color,
-                width: p.size,
-                height: p.shape === 'rect' ? `${parseInt(p.size, 10) * 1.6}px` : p.size,
-                borderRadius: p.shape === 'circle' ? '50%' : '2px',
-                '--drift-x': p.driftX,
-                '--fall-duration': p.fallDuration,
-                '--fall-delay': p.fallDelay,
-                '--spin-deg': p.spinDeg
-              }}
-            />
-          ))}
-        </div>
-      )}
-
       {/* CELEBRATION MODAL */}
       {showCelebration && (
         <div className="celebration-backdrop" onClick={() => setShowCelebration(false)}>
@@ -1287,17 +1216,8 @@ export default function App() {
               <X size={18} />
             </button>
 
-            <div className="celebration-badge-glow">
-              <div className="celebration-glow-ring"></div>
-              <div className="celebration-icon-circle">
-                <svg className="checkmark-svg" viewBox="0 0 52 52">
-                  <circle className="checkmark-circle" cx="26" cy="26" r="23" />
-                  <path className="checkmark-check" d="M14 27l8 8 16-16" />
-                </svg>
-              </div>
-            </div>
-
-            <h3 className="celebration-title">Pembayaran Terverifikasi!</h3>
+            <span className="section-tag">Status pembayaran</span>
+            <h3 className="celebration-title">Pembayaran terverifikasi</h3>
             <p className="celebration-subtitle">
               Simulasi transaksi via Xendit Sandbox berhasil dikonfirmasi secara real-time.
             </p>
@@ -1309,8 +1229,8 @@ export default function App() {
             <div className="celebration-details">
               <div className="celebration-row">
                 <span className="celebration-label">Status</span>
-                <span className="celebration-value" style={{ color: '#059669', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <CheckCircle2 size={15} /> LUNAS (PAID)
+                <span className="celebration-value paid">
+                  LUNAS (PAID)
                 </span>
               </div>
               {createdInvoice?.external_id && (
@@ -1340,7 +1260,6 @@ export default function App() {
               className="celebration-btn"
               onClick={() => setShowCelebration(false)}
             >
-              <Sparkles size={16} />
               <span>Tutup & Lanjutkan Eksplorasi</span>
             </button>
           </div>

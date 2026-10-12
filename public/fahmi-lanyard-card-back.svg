@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1440" viewBox="0 0 1024 1440">
+  <rect width="1024" height="1440" fill="#f8f5ed"/>
+  <path d="M0 0h1024v26H0z" fill="#72583f"/>
+  <text x="88" y="224" fill="#72583f" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="7">FAHMI FEBRIANSYAH</text>
+  <path d="M88 272h848" stroke="#d9d1c3" stroke-width="3"/>
+  <text x="88" y="430" fill="#928e84" font-family="Arial, sans-serif" font-size="26" letter-spacing="4">BIDANG</text>
+  <text x="88" y="492" fill="#292820" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700">Web development</text>
+  <text x="88" y="552" fill="#292820" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700">&amp; sistem informasi</text>
+  <path d="M88 624h848" stroke="#d9d1c3" stroke-width="3"/>
+  <text x="88" y="740" fill="#928e84" font-family="Arial, sans-serif" font-size="26" letter-spacing="4">TEKNOLOGI</text>
+  <text x="88" y="806" fill="#5f5c53" font-family="Arial, sans-serif" font-size="35">PHP · JavaScript · MySQL</text>
+  <text x="88" y="862" fill="#5f5c53" font-family="Arial, sans-serif" font-size="35">HTML · CSS · REST API</text>
+  <path d="M88 930h848" stroke="#d9d1c3" stroke-width="3"/>
+  <text x="88" y="1052" fill="#928e84" font-family="Arial, sans-serif" font-size="26" letter-spacing="4">HUBUNGI</text>
+  <text x="88" y="1118" fill="#292820" font-family="Arial, sans-serif" font-size="34">fahmijha12@gmail.com</text>
+  <text x="88" y="1194" fill="#5f5c53" font-family="Arial, sans-serif" font-size="30">Bogor, Jawa Barat, Indonesia</text>
+  <path d="M88 1290h848" stroke="#d9d1c3" stroke-width="3"/>
+  <text x="88" y="1356" fill="#72583f" font-family="Arial, sans-serif" font-size="23" letter-spacing="5">PORTOFOLIO · 2026</text>
+</svg>

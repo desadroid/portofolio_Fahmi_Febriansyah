@@ -30,7 +30,17 @@ if (fs.existsSync(htaccessSrc)) {
   console.log('✓ Successfully copied .htaccess -> dist/.htaccess');
 }
 
-// 3. Sync dist/assets to root assets/
+// 3. Include the React Bits component license in the deployment bundle
+const lanyardLicenseSrc = path.resolve('LICENSES', 'React-Bits-Lanyard.txt');
+const lanyardLicenseDest = path.resolve('dist', 'LICENSES', 'React-Bits-Lanyard.txt');
+
+if (fs.existsSync(lanyardLicenseSrc)) {
+  fs.mkdirSync(path.dirname(lanyardLicenseDest), { recursive: true });
+  fs.copyFileSync(lanyardLicenseSrc, lanyardLicenseDest);
+  console.log('✓ Included React Bits Lanyard license in dist/LICENSES/');
+}
+
+// 4. Sync dist/assets to root assets/
 const distAssets = path.resolve('dist', 'assets');
 const rootAssets = path.resolve('assets');
 
