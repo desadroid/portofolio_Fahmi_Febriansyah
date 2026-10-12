@@ -412,15 +412,10 @@ export default function App() {
       ]
     },
     {
-      title: 'Web Developer',
+      title: 'Admin',
       organization: 'Bengkel DPM Ciangsana Bogor (Mobil)',
       date: '2024',
-      desc: 'Mengembangkan aplikasi manajemen bengkel mobil berbasis web untuk digitalisasi dan efisiensi operasional bengkel.',
-      tasks: [
-        'Membangun sistem pencatatan dokumen dan riwayat servis kendaraan pelanggan.',
-        'Membuat modul manajemen stok sparepart untuk mencatat keluar-masuk barang secara akurat.',
-        'Mengotomatisasi pembuatan nota dan invoice servis kendaraan.'
-      ]
+      desc: 'Bertugas di bagian administrasi Bengkel DPM Ciangsana Bogor.'
     },
     {
       title: 'Mitra Driver',
@@ -573,7 +568,7 @@ export default function App() {
             <div className="hero-lanyard-stage" role="img" aria-label="Kartu identitas Fahmi Febriansyah yang dapat digerakkan dan dibalik">
               <Lanyard
                 className="hero-lanyard"
-                frontImage="./fahmi-lanyard-card.svg"
+                frontImage="./fahmi-lanyard-card.png"
                 backImage="./fahmi-lanyard-card-back.svg"
                 finish="matte"
                 strapColor="#72583f"
@@ -618,11 +613,13 @@ export default function App() {
                   <div className="exp-date">{exp.date}</div>
                 </div>
                 <p className="exp-desc">{exp.desc}</p>
-                <ul className="exp-tasks">
-                  {exp.tasks.map((task, i) => (
-                    <li key={i}>{task}</li>
-                  ))}
-                </ul>
+                {exp.tasks?.length > 0 && (
+                  <ul className="exp-tasks">
+                    {exp.tasks.map((task, i) => (
+                      <li key={i}>{task}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             ))}
           </div>
